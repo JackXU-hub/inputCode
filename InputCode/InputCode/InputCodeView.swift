@@ -58,12 +58,12 @@ class InputCodeView: UIView,UITextFieldDelegate {
         let notificationCenter = NotificationCenter.default
         
         let operationQueue = OperationQueue.main
-        notificationCenter.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: operationQueue) {_ in
+        notificationCenter.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: operationQueue) {_ in
             
             if self.buttonCallBack != nil {
                 self.buttonCallBack!(tf.text ?? "")
             }
-            if ((tf.text?.characters.count)! > 4){
+            if ((tf.text!.count) > 4){
                 let finalIndex = tf.text?.index((tf.text?.startIndex)!, offsetBy: 0)
                 let finalSuffix = tf.text?.substring(from: finalIndex!)
                 tf.text = finalSuffix;
@@ -90,7 +90,7 @@ class InputCodeView: UIView,UITextFieldDelegate {
             label8 = self.viewWithTag(203) as! UILabel
             
             //let text : NSString = tf.text
-            if (tf.text?.characters.count == 0) {
+            if (tf.text!.count == 0) {
                 label1.backgroundColor = UIColor.white;
                 label2.backgroundColor = UIColor.white
                 label3.backgroundColor = UIColor.white
@@ -101,7 +101,7 @@ class InputCodeView: UIView,UITextFieldDelegate {
                 label8.text = ""
                 
             }
-            if (tf.text?.characters.count == 1) {
+            if (tf.text!.count == 1) {
                 label1.backgroundColor = UIColor.orange;
                 label2.backgroundColor = UIColor.white
                 label3.backgroundColor = UIColor.white
@@ -116,7 +116,7 @@ class InputCodeView: UIView,UITextFieldDelegate {
                 
                 
             }
-            if (tf.text?.characters.count == 2) {
+            if (tf.text!.count == 2) {
                 label1.backgroundColor = UIColor.orange;
                 label2.backgroundColor = UIColor.orange
                 label3.backgroundColor = UIColor.white
@@ -133,7 +133,7 @@ class InputCodeView: UIView,UITextFieldDelegate {
                 
                 
             }
-            if (tf.text?.characters.count == 3) {
+            if (tf.text!.count == 3) {
                 label1.backgroundColor = UIColor.orange;
                 label2.backgroundColor = UIColor.orange
                 label3.backgroundColor = UIColor.orange
@@ -156,7 +156,7 @@ class InputCodeView: UIView,UITextFieldDelegate {
                 
             }
             
-            if (tf.text?.characters.count == 4) {
+            if (tf.text!.count == 4) {
                 label1.backgroundColor = UIColor.orange;
                 label2.backgroundColor = UIColor.orange
                 label3.backgroundColor = UIColor.orange
